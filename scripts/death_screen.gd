@@ -9,6 +9,9 @@ func _ready() -> void:
 	hide()
 	$Center/Box/Retry.pressed.connect(_on_retry_pressed)
 	$Center/Box/MainMenu.pressed.connect(_on_main_menu_pressed)
+	for button: TextureButton in [$Center/Box/Retry, $Center/Box/MainMenu]:
+		button.mouse_entered.connect(func() -> void: button.modulate = Color(1.2, 1.2, 1.2))
+		button.mouse_exited.connect(func() -> void: button.modulate = Color.WHITE)
 
 
 func open(score: int) -> void:

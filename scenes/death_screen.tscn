@@ -3,19 +3,32 @@
 [ext_resource type="Script" uid="uid://f0qnylwgqn3g" path="res://scripts/death_screen.gd" id="1_death"]
 [ext_resource type="AudioStream" uid="uid://bqoprpk71pwrk" path="res://assets/sounds/death.wav" id="2_death"]
 [ext_resource type="AudioStream" uid="uid://g41n7cet48vc" path="res://assets/sounds/click.wav" id="3_click"]
+[ext_resource type="Texture2D" uid="uid://dcfofefib3mpu" path="res://assets/menu/death/respawn.png" id="4_respawn"]
+[ext_resource type="Texture2D" uid="uid://d2n6863njbg3s" path="res://assets/menu/death/menu.png" id="5_menu"]
+[ext_resource type="Texture2D" uid="uid://ic60x6y30ad" path="res://assets/menu/death/death backdrop.png" id="6_backdrop"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_respawn"]
+atlas = ExtResource("4_respawn")
+region = Rect2(44, 100, 176, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_menu"]
+atlas = ExtResource("5_menu")
+region = Rect2(40, 104, 164, 48)
 
 [node name="DeathScreen" type="CanvasLayer" unique_id=1203945871]
 process_mode = 3
 layer = 10
 script = ExtResource("1_death")
 
-[node name="Dim" type="ColorRect" parent="." unique_id=482019377]
+[node name="Backdrop" type="TextureRect" parent="." unique_id=482019377]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.6)
+texture = ExtResource("6_backdrop")
+expand_mode = 1
+stretch_mode = 6
 
 [node name="Center" type="CenterContainer" parent="." unique_id=1938274650]
 anchors_preset = 15
@@ -28,28 +41,29 @@ grow_vertical = 2
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="Title" type="Label" parent="Center/Box" unique_id=1629384710]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.9137255, 0.11764706, 0.3882353, 1)
-theme_override_font_sizes/font_size = 64
-text = "You Died"
-horizontal_alignment = 1
-
 [node name="Score" type="Label" parent="Center/Box" unique_id=1093847261]
 layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 32
 text = "Score: 0"
 horizontal_alignment = 1
 
-[node name="Retry" type="Button" parent="Center/Box" unique_id=294817365]
+[node name="Retry" type="TextureButton" parent="Center/Box" unique_id=294817365]
+custom_minimum_size = Vector2(352, 104)
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Retry"
+size_flags_horizontal = 4
+texture_normal = SubResource("AtlasTexture_respawn")
+ignore_texture_size = true
+stretch_mode = 0
 
-[node name="MainMenu" type="Button" parent="Center/Box" unique_id=1847261930]
+[node name="MainMenu" type="TextureButton" parent="Center/Box" unique_id=1847261930]
+custom_minimum_size = Vector2(328, 96)
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Main Menu"
+size_flags_horizontal = 4
+texture_normal = SubResource("AtlasTexture_menu")
+ignore_texture_size = true
+stretch_mode = 0
 
 [node name="DeathSound" type="AudioStreamPlayer" parent="." unique_id=938172645]
 stream = ExtResource("2_death")
