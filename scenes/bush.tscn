@@ -1,0 +1,19 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" uid="uid://d33bg5dlba4ki" path="res://scripts/bush.gd" id="1_bush"]
+[ext_resource type="Texture2D" uid="uid://yl8qklar16an" path="res://assets/sprites/bush.png" id="2_bush"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bush"]
+size = Vector2(14, 7)
+
+[node name="Bush" type="Area2D" unique_id=1847362910]
+z_index = -1
+collision_layer = 0
+script = ExtResource("1_bush")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=562918374]
+texture = ExtResource("2_bush")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1293847562]
+position = Vector2(-0.5, 4.5)
+shape = SubResource("RectangleShape2D_bush")

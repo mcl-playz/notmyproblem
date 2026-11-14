@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" path="res://scenes/death_screen.tscn" id="5_death"]
 [ext_resource type="Script" uid="uid://5hi8b04fnduq" path="res://scripts/game.gd" id="6_game"]
 [ext_resource type="Script" uid="uid://bkrg5j3xto1gv" path="res://scripts/camera.gd" id="7_camera"]
+[ext_resource type="Script" uid="uid://djkp6eh6i2mpf" path="res://scripts/bush_spawner.gd" id="8_bush_spawner"]
+[ext_resource type="PackedScene" path="res://scenes/bush.tscn" id="9_bush"]
 
 [node name="Game" type="Node2D" unique_id=646669901]
 script = ExtResource("6_game")
@@ -28,6 +30,12 @@ wait_time = 3.0
 autostart = true
 script = ExtResource("4_spawn")
 enemy_scene = ExtResource("3_lnu2h")
+
+[node name="BushSpawner" type="Timer" parent="." unique_id=1650293847]
+wait_time = 10.0
+autostart = true
+script = ExtResource("8_bush_spawner")
+bush_scene = ExtResource("9_bush")
 
 [node name="DeathScreen" parent="." unique_id=884019273 instance=ExtResource("5_death")]
 

@@ -34,6 +34,33 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
+func heal(amount: int) -> void:
+	health = mini(health + amount, max_health)
+	health_bar.value = health
+	_show_popup("+%d HP" % amount)
+
+
+## Shows text above the player's head that floats up and fades out.
+func _show_popup(text: String) -> void:
+	var label := Label.new()
+	label.text = text
+	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	label.custom_minimum_size.x = 120.0
+	label.add_theme_font_size_override("font_size", 24)
+	label.add_theme_color_override("font_color", Color(0.9137255, 0.11764706, 0.3882353))
+	label.add_theme_color_override("font_outline_color", Color.BLACK)
+	label.add_theme_constant_override("outline_size", 8)
+	$HUD.add_child(label)
+	# The HUD draws in screen space, so place the label over where the player's head is on screen.
+	var head := get_global_transform_with_canvas() * Vector2(0, -10)
+	label.position = head - Vector2(60, 34)
+
+	var tween := label.create_tween().set_parallel()
+	tween.tween_property(label, "position:y", label.position.y - 40.0, 0.8)
+	tween.tween_property(label, "modulate:a", 0.0, 0.8).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+	tween.chain().tween_callback(label.queue_free)
+
+
 func take_damage(amount: int) -> void:
 	if health == 0:
 		return
