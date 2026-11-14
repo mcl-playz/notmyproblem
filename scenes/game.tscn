@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://deajsy5k7ueeq" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://bbhctkoni527f" path="res://scenes/enemy.tscn" id="3_lnu2h"]
+[ext_resource type="Script" uid="uid://buenfederb0ba" path="res://scripts/enemy_spawner.gd" id="4_spawn"]
 
 [node name="Game" type="Node2D" unique_id=646669901]
 
@@ -16,5 +17,9 @@ position_smoothing_enabled = true
 
 [node name="Enemy" parent="." unique_id=1560836702 instance=ExtResource("3_lnu2h")]
 position = Vector2(43, 7)
-collision_layer = 2
-collision_mask = 0
+
+[node name="EnemySpawner" type="Timer" parent="." unique_id=2093517760]
+wait_time = 3.0
+autostart = true
+script = ExtResource("4_spawn")
+enemy_scene = ExtResource("3_lnu2h")

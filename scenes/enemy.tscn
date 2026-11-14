@@ -17,7 +17,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Enemy" type="CharacterBody2D" unique_id=1560836702]
+[node name="Enemy" type="CharacterBody2D" unique_id=1560836702 groups=["enemies"]]
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_md0e3")
 bullet_scene = ExtResource("2_5uy6h")
 
