@@ -1,6 +1,8 @@
 class_name Enemy
 extends CharacterBody2D
 
+signal died
+
 @export var speed: float = 25.0
 @export var bullet_scene: PackedScene
 @export var shoot_interval: float = 2.0
@@ -54,6 +56,7 @@ func take_damage(amount: int) -> void:
 	var tween := HitEffect.play(sprite)
 	damage_sound.play()
 	if health == 0:
+		died.emit()
 		# Stop moving, shooting, and getting hit, and disappear once the hit effect ends.
 		set_physics_process(false)
 		$CollisionShape2D.set_deferred("disabled", true)

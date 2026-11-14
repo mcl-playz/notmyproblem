@@ -2,6 +2,7 @@ extends CanvasLayer
 
 @onready var death_sound: AudioStreamPlayer = $DeathSound
 @onready var click_sound: AudioStreamPlayer = $ClickSound
+@onready var score_label: Label = $Center/Box/Score
 
 
 func _ready() -> void:
@@ -10,7 +11,8 @@ func _ready() -> void:
 	$Center/Box/MainMenu.pressed.connect(_on_main_menu_pressed)
 
 
-func open() -> void:
+func open(score: int) -> void:
+	score_label.text = "Score: %d" % score
 	show()
 	get_tree().paused = true
 	death_sound.play()
