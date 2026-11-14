@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://buenfederb0ba" path="res://scripts/enemy_spawner.gd" id="4_spawn"]
 [ext_resource type="PackedScene" path="res://scenes/death_screen.tscn" id="5_death"]
 [ext_resource type="Script" uid="uid://5hi8b04fnduq" path="res://scripts/game.gd" id="6_game"]
+[ext_resource type="Script" uid="uid://bkrg5j3xto1gv" path="res://scripts/camera.gd" id="7_camera"]
 
 [node name="Game" type="Node2D" unique_id=646669901]
 script = ExtResource("6_game")
@@ -15,8 +16,9 @@ collision_mask = 2
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=308955695]
 position = Vector2(-1, -3.0000076)
-zoom = Vector2(7, 7)
+zoom = Vector2(5, 5)
 position_smoothing_enabled = true
+script = ExtResource("7_camera")
 
 [node name="Enemy" parent="." unique_id=1560836702 instance=ExtResource("3_lnu2h")]
 position = Vector2(43, 7)
