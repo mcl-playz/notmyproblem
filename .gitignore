@@ -6,4 +6,5 @@
 .backstitch_version
 /.backstitch/
 backstitch.cfg
-**/.DS_STORE
+.DS_Store
+**/.DS_Store
