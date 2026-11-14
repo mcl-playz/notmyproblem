@@ -29,8 +29,17 @@ func _spawn() -> void:
 	if player == null or get_tree().get_nodes_in_group("enemies").size() >= max_enemies:
 		return
 
-	var view_size := get_viewport().get_visible_rect().size / get_viewport().get_camera_2d().zoom
-	var distance := view_size.length() / 2.0 + spawn_margin
-	var enemy: Node2D = enemy_scene.instantiate()
-	enemy.global_position = player.global_position + Vector2.RIGHT.rotated(randf() * TAU) * distance
-	get_parent().add_child(enemy)
+	var camera := get_viewport().get_camera_2d()
+	var half_view := get_viewport().get_visible_rect().size / camera.zoom / 2.0 + Vector2.ONE * spawn_margin
+	var arena = get_tree().get_first_node_in_group("arena")
+	# Pick a random direction and go just past the edge of the screen that way. Try again
+	# until the point is on the island rather than in the water; if none is, skip this spawn.
+	for attempt in 16:
+		var direction := Vector2.RIGHT.rotated(randf() * TAU)
+		var distance := minf(half_view.x / absf(direction.x), half_view.y / absf(direction.y))
+		var spawn_position := camera.get_screen_center_position() + direction * distance
+		if arena == null or arena.clamp_inside(spawn_position, 10.0) == spawn_position:
+			var enemy: Node2D = enemy_scene.instantiate()
+			enemy.global_position = spawn_position
+			get_parent().add_child(enemy)
+			return
