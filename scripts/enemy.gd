@@ -12,6 +12,7 @@ var shoot_timer: float = 0.0
 
 @onready var health: int = max_health
 @onready var sprite: AnimatedSprite2D = $Sprite
+@onready var shoot_sound: AudioStreamPlayer2D = $ShootSound
 
 
 func _ready() -> void:
@@ -42,6 +43,7 @@ func shoot(direction: Vector2) -> void:
 	bullet.global_position = global_position
 	bullet.global_rotation = direction.angle()
 	get_tree().current_scene.add_child(bullet)
+	shoot_sound.play()
 
 
 func take_damage(amount: int) -> void:
