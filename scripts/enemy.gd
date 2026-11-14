@@ -20,6 +20,8 @@ var shoot_timer: float = 0.0
 
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
+	var looks := sprite.sprite_frames.get_animation_names()
+	sprite.play(looks[randi() % looks.size()])
 
 func _physics_process(delta: float) -> void:
 	if not is_instance_valid(player):

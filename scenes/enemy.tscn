@@ -2,7 +2,8 @@
 
 [ext_resource type="Script" uid="uid://eysima7p1d2o" path="res://scripts/enemy.gd" id="1_md0e3"]
 [ext_resource type="PackedScene" uid="uid://bbyy3ces6i3ne" path="res://scenes/bullet.tscn" id="2_5uy6h"]
-[ext_resource type="Texture2D" uid="uid://bkjcs7qjjm84w" path="res://assets/sprites/enemies/kieran (evil).png" id="3_4ra3w"]
+[ext_resource type="Texture2D" uid="uid://bj1sn0qtkqacn" path="res://assets/sprites/enemies/kieran.png" id="3_4ra3w"]
+[ext_resource type="Texture2D" uid="uid://lhpq711ren8e" path="res://assets/sprites/enemies/daniel.png" id="3_xwavj"]
 [ext_resource type="AudioStream" uid="uid://bafb4ascv35bo" path="res://assets/sounds/gun-shot.wav" id="4_shot"]
 [ext_resource type="AudioStream" uid="uid://tvxsfxw2j2g" path="res://assets/sounds/damage.wav" id="5_damage"]
 
@@ -12,10 +13,18 @@
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("3_xwavj")
+}],
+"loop": 1,
+"name": &"daniel",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("3_4ra3w")
 }],
 "loop": 1,
-"name": &"default",
+"name": &"kieran",
 "speed": 5.0
 }]
 
@@ -30,6 +39,8 @@ shape = SubResource("CircleShape2D_5uy6h")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=874660227]
 sprite_frames = SubResource("SpriteFrames_fnkrl")
+animation = &"daniel"
+autoplay = "daniel"
 
 [node name="ShootSound" type="AudioStreamPlayer2D" parent="." unique_id=1749203316]
 stream = ExtResource("4_shot")

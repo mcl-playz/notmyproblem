@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bkjcs7qjjm84w"
-path="res://.godot/imported/kieran (evil).png-0fe5516f0b904060d857adb8665edeea.ctex"
+uid="uid://bj1sn0qtkqacn"
+path="res://.godot/imported/kieran.png-b595dc7db9a5c0fca10d060f83a418bd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/enemies/kieran (evil).png"
-dest_files=["res://.godot/imported/kieran (evil).png-0fe5516f0b904060d857adb8665edeea.ctex"]
+source_file="res://assets/sprites/enemies/kieran.png"
+dest_files=["res://.godot/imported/kieran.png-b595dc7db9a5c0fca10d060f83a418bd.ctex"]
 
 [params]
 
