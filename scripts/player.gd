@@ -8,6 +8,7 @@ extends CharacterBody2D
 
 @onready var health: int = max_health
 @onready var health_label: Label = $HUD/HealthLabel
+@onready var sprite: AnimatedSprite2D = $Sprite
 
 
 func _ready() -> void:
@@ -28,6 +29,7 @@ func _physics_process(delta: float) -> void:
 func take_damage(amount: int) -> void:
 	health = maxi(health - amount, 0)
 	_update_health_label()
+	HitEffect.play(sprite)
 	if health == 0:
 		get_tree().reload_current_scene()
 
