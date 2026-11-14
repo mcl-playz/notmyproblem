@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bbyy3ces6i3ne" path="res://scenes/bullet.tscn" id="2_5uy6h"]
 [ext_resource type="Texture2D" uid="uid://bkjcs7qjjm84w" path="res://assets/sprites/enemies/kieran (evil).png" id="3_4ra3w"]
 [ext_resource type="AudioStream" uid="uid://bafb4ascv35bo" path="res://assets/sounds/gun-shot.wav" id="4_shot"]
+[ext_resource type="AudioStream" uid="uid://tvxsfxw2j2g" path="res://assets/sounds/damage.wav" id="5_damage"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5uy6h"]
 
@@ -32,3 +33,6 @@ sprite_frames = SubResource("SpriteFrames_fnkrl")
 
 [node name="ShootSound" type="AudioStreamPlayer2D" parent="." unique_id=1749203316]
 stream = ExtResource("4_shot")
+
+[node name="DamageSound" type="AudioStreamPlayer2D" parent="." unique_id=1520938471]
+stream = ExtResource("5_damage")

@@ -5,6 +5,9 @@
 [ext_resource type="Script" uid="uid://d05qmgbd07un7" path="res://scripts/shield.gd" id="3_dqkch"]
 [ext_resource type="Texture2D" uid="uid://cleid83wykt6e" path="res://assets/sprites/shield.png" id="4_qlg0r"]
 [ext_resource type="Texture2D" uid="uid://c812av30tetr6" path="res://assets/sprites/heart.png" id="5_heart"]
+[ext_resource type="AudioStream" uid="uid://tvxsfxw2j2g" path="res://assets/sounds/damage.wav" id="6_damage"]
+[ext_resource type="AudioStream" uid="uid://uxtrke1hjinh" path="res://assets/sounds/footsteps.wav" id="7_steps"]
+[ext_resource type="AudioStream" uid="uid://vnfaf5c2oaw6" path="res://assets/sounds/reflect.wav" id="8_reflect"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fnkrl"]
 animations = [{
@@ -59,6 +62,15 @@ texture = ExtResource("4_qlg0r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shield" unique_id=1765306481]
 shape = SubResource("RectangleShape2D_fnkrl")
+
+[node name="ReflectSound" type="AudioStreamPlayer" parent="Shield" unique_id=1102938475]
+stream = ExtResource("8_reflect")
+
+[node name="DamageSound" type="AudioStreamPlayer" parent="." unique_id=640192837]
+stream = ExtResource("6_damage")
+
+[node name="FootstepsSound" type="AudioStreamPlayer" parent="." unique_id=1739204856]
+stream = ExtResource("7_steps")
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1402236718]
 

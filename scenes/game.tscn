@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://deajsy5k7ueeq" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://bbhctkoni527f" path="res://scenes/enemy.tscn" id="3_lnu2h"]
 [ext_resource type="Script" uid="uid://buenfederb0ba" path="res://scripts/enemy_spawner.gd" id="4_spawn"]
+[ext_resource type="PackedScene" path="res://scenes/death_screen.tscn" id="5_death"]
 
 [node name="Game" type="Node2D" unique_id=646669901]
 
@@ -23,3 +24,7 @@ wait_time = 3.0
 autostart = true
 script = ExtResource("4_spawn")
 enemy_scene = ExtResource("3_lnu2h")
+
+[node name="DeathScreen" parent="." unique_id=884019273 instance=ExtResource("5_death")]
+
+[connection signal="died" from="Player" to="DeathScreen" method="open"]

@@ -16,6 +16,7 @@ var is_parrying: bool:
 @onready var player: Node2D = get_parent()
 @onready var sprite: AnimatedSprite2D = $"../Sprite"
 @onready var shield_sprite: Sprite2D = $Sprite
+@onready var reflect_sound: AudioStreamPlayer = $ReflectSound
 
 
 func _process(delta: float) -> void:

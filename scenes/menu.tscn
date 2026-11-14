@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c7o48vh0yu41r"]
 
 [ext_resource type="Script" uid="uid://bj24tovdk4v4" path="res://scripts/menu.gd" id="1_yqeox"]
+[ext_resource type="AudioStream" uid="uid://g41n7cet48vc" path="res://assets/sounds/click.wav" id="2_click"]
 
 [node name="Control" type="Control" unique_id=1720388359]
 layout_mode = 3
@@ -37,3 +38,6 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Quit
 "
+
+[node name="ClickSound" type="AudioStreamPlayer" parent="." unique_id=1364829175]
+stream = ExtResource("2_click")

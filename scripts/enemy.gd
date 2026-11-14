@@ -13,6 +13,7 @@ var shoot_timer: float = 0.0
 @onready var health: int = max_health
 @onready var sprite: AnimatedSprite2D = $Sprite
 @onready var shoot_sound: AudioStreamPlayer2D = $ShootSound
+@onready var damage_sound: AudioStreamPlayer2D = $DamageSound
 
 
 func _ready() -> void:
@@ -51,6 +52,7 @@ func take_damage(amount: int) -> void:
 		return
 	health = maxi(health - amount, 0)
 	var tween := HitEffect.play(sprite)
+	damage_sound.play()
 	if health == 0:
 		# Stop moving, shooting, and getting hit, and disappear once the hit effect ends.
 		set_physics_process(false)

@@ -9,6 +9,8 @@ var deflected: bool = false
 ## The enemy a deflected bullet homes in on.
 var target: Enemy
 
+@onready var reflect_sound: AudioStreamPlayer2D = $ReflectSound
+
 
 func _ready() -> void:
 	direction = Vector2.LEFT.rotated(global_rotation)
@@ -29,10 +31,12 @@ func _on_shield_entered(shield: Shield) -> void:
 		return
 	# Mirror off the shield; the bullet keeps this direction if no enemy is left to home in on.
 	direction = direction.bounce(normal)
+	reflect_sound.play()
 	# The sprite points left, so face it along the new direction.
 	rotation = Vector2.LEFT.angle_to(direction)
 	deflected = true
 	target = _nearest_enemy()
+	shield.reflect_sound.play()
 
 
 func _on_body_entered(body: Node2D) -> void:
