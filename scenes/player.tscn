@@ -1,15 +1,15 @@
 [gd_scene format=3 uid="uid://deajsy5k7ueeq"]
 
-[ext_resource type="Texture2D" uid="uid://cijph08t6dj0j" path="res://assets/sprites/player.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://cewkucn0nrpw1" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="Texture2D" uid="uid://b12da3nfu1xed" path="res://assets/sprites/players/Ali Kazim.png" id="2_dqkch"]
 [ext_resource type="Script" uid="uid://d05qmgbd07un7" path="res://scripts/shield.gd" id="3_dqkch"]
-[ext_resource type="Texture2D" uid="uid://ny4l1ga8f263" path="res://assets/sprites/shield.png" id="4_qlg0r"]
+[ext_resource type="Texture2D" uid="uid://cleid83wykt6e" path="res://assets/sprites/shield.png" id="4_qlg0r"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fnkrl"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_3vyb7")
+"texture": ExtResource("2_dqkch")
 }],
 "loop": 1,
 "name": &"default",
@@ -22,7 +22,8 @@ radius = 7.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fnkrl"]
 size = Vector2(10, 2)
 
-[node name="Player" type="CharacterBody2D" unique_id=932545134]
+[node name="Player" type="CharacterBody2D" unique_id=932545134 groups=["player"]]
+collision_mask = 0
 script = ExtResource("1_g2els")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1966987674]
@@ -32,6 +33,8 @@ sprite_frames = SubResource("SpriteFrames_fnkrl")
 shape = SubResource("CircleShape2D_fnkrl")
 
 [node name="Shield" type="Area2D" parent="." unique_id=524603250]
+collision_layer = 8
+collision_mask = 0
 script = ExtResource("3_dqkch")
 
 [node name="Sprite" type="Sprite2D" parent="Shield" unique_id=1186387519]

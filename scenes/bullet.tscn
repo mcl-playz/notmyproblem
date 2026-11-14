@@ -1,14 +1,28 @@
 [gd_scene format=3 uid="uid://bbyy3ces6i3ne"]
 
-[ext_resource type="Texture2D" uid="uid://3gjwi6qpcno7" path="res://assets/sprites/bullet.png" id="1_mkf8s"]
+[ext_resource type="Texture2D" uid="uid://vrjwvf0rsxiq" path="res://assets/sprites/bullet.png" id="1_mkf8s"]
+[ext_resource type="Script" uid="uid://botu3t83ylyh" path="res://scripts/bullet.gd" id="1_y25gk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fnkrl"]
-size = Vector2(4, 2)
+size = Vector2(4, 1)
 
-[node name="Bullet" type="Area2D" unique_id=425341678]
+[node name="Bullet" type="CharacterBody2D" unique_id=128919948]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_y25gk")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=501657254]
+position = Vector2(2, 0.5)
 texture = ExtResource("1_mkf8s")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1582296507]
 shape = SubResource("RectangleShape2D_fnkrl")
+
+[node name="ShieldDetector" type="Area2D" parent="." unique_id=1939181266]
+collision_layer = 16
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShieldDetector" unique_id=1897840096]
+shape = SubResource("RectangleShape2D_fnkrl")
+
+[connection signal="area_entered" from="ShieldDetector" to="." method="_on_shield_entered"]

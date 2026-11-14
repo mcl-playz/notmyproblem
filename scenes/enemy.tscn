@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://bbhctkoni527f"]
+
+[ext_resource type="Script" uid="uid://eysima7p1d2o" path="res://scripts/enemy.gd" id="1_md0e3"]
+[ext_resource type="PackedScene" uid="uid://bbyy3ces6i3ne" path="res://scenes/bullet.tscn" id="2_5uy6h"]
+[ext_resource type="Texture2D" uid="uid://bkjcs7qjjm84w" path="res://assets/sprites/enemies/kieran (evil).png" id="3_4ra3w"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5uy6h"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fnkrl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_4ra3w")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Enemy" type="CharacterBody2D" unique_id=1560836702]
+script = ExtResource("1_md0e3")
+bullet_scene = ExtResource("2_5uy6h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1176230539]
+shape = SubResource("CircleShape2D_5uy6h")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=874660227]
+sprite_frames = SubResource("SpriteFrames_fnkrl")
