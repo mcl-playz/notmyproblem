@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://fb61hriy0epu"
+path="res://.godot/imported/a lot like christmas.mp3-6c65878a8c9536fad278a5fa050251ba.mp3str"
+
+[deps]
+
+source_file="res://assets/music/a lot like christmas.mp3"
+dest_files=["res://.godot/imported/a lot like christmas.mp3-6c65878a8c9536fad278a5fa050251ba.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
