@@ -1,12 +1,17 @@
+class_name Enemy
 extends CharacterBody2D
 
 @export var speed: float = 25.0
 @export var bullet_scene: PackedScene
 @export var shoot_interval: float = 2.0
 @export var stopping_distance: float = 40.0
+@export var max_health: int = 1
 
 var player: Node2D
 var shoot_timer: float = 0.0
+
+@onready var health: int = max_health
+
 
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
@@ -37,3 +42,8 @@ func shoot(direction: Vector2) -> void:
 	bullet.global_rotation = direction.angle()
 	get_tree().current_scene.add_child(bullet)
 
+
+func take_damage(amount: int) -> void:
+	health = maxi(health - amount, 0)
+	if health == 0:
+		queue_free()

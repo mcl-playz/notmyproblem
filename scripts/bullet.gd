@@ -4,6 +4,8 @@ extends CharacterBody2D
 @export var damage: int = 1
 
 var direction: Vector2
+## Deflected bullets hurt enemies instead of the player.
+var deflected: bool = false
 
 
 func _ready() -> void:
@@ -23,9 +25,10 @@ func _on_shield_entered(shield: Shield) -> void:
 	direction = direction.bounce(normal)
 	# The sprite points left, so face it along the new direction.
 	rotation = Vector2.LEFT.angle_to(direction)
+	deflected = true
 
 
 func _on_body_entered(body: Node2D) -> void:
-	if body is Player:
+	if (body is Player and not deflected) or (body is Enemy and deflected):
 		body.take_damage(damage)
 		queue_free()
