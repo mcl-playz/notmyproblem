@@ -10,6 +10,8 @@ var next_index: int = 0
 func _ready() -> void:
 	# Keep playing while the game is paused, such as on the death screen.
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	# 0 dB was too quiet next to the sound effects.
+	volume_db = 6.0
 	for file in ResourceLoader.list_directory(MUSIC_DIR):
 		if file.get_extension() in ["mp3", "ogg", "wav"]:
 			tracks.append(MUSIC_DIR + file)
