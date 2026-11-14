@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://djkp6eh6i2mpf" path="res://scripts/bush_spawner.gd" id="8_bush_spawner"]
 [ext_resource type="PackedScene" path="res://scenes/bush.tscn" id="9_bush"]
 [ext_resource type="Script" uid="uid://br054wla7c40k" path="res://scripts/arena.gd" id="10_arena"]
+[ext_resource type="Texture2D" uid="uid://b26fyaegp3va8" path="res://assets/gameplay backdrop.png" id="11_ground"]
 
 [node name="Game" type="Node2D" unique_id=646669901]
 script = ExtResource("6_game")
@@ -19,7 +20,9 @@ script = ExtResource("10_arena")
 size = Vector2(600, 600)
 
 [node name="Ground" type="Polygon2D" parent="Arena" unique_id=938475610]
-color = Color(0.49, 0.7, 0.32, 1)
+texture_repeat = 2
+texture = ExtResource("11_ground")
+texture_scale = Vector2(15, 15)
 polygon = PackedVector2Array(-300, -300, 300, -300, 300, 300, -300, 300)
 
 [node name="Shore" type="Line2D" parent="Arena" unique_id=1203948576]
