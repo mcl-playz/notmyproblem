@@ -16,10 +16,13 @@ func _physics_process(_delta: float) -> void:
 
 
 func _on_shield_entered(shield: Shield) -> void:
-	if not shield.is_parrying:
+	# The shield is rotated so its local up points away from the player.
+	var normal := Vector2.UP.rotated(shield.global_rotation)
+	if not shield.is_parrying or direction.dot(normal) >= 0.0:
 		return
-	direction = direction.bounce(shield.global_position.direction_to(global_position))
-	rotation = direction.angle()
+	direction = direction.bounce(normal)
+	# The sprite points left, so face it along the new direction.
+	rotation = Vector2.LEFT.angle_to(direction)
 
 
 func _on_body_entered(body: Node2D) -> void:
