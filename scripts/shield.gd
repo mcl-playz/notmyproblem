@@ -3,9 +3,9 @@ extends Area2D
 
 @export var padding: float = 5.0
 ## How long the shield deflects bullets after a click, in seconds.
-@export var parry_window: float = 0.3
+@export var parry_window: float = 0.5
 ## Time after a click before the next click can parry, in seconds.
-@export var parry_cooldown: float = 0.4
+@export var parry_cooldown: float = 0.7
 
 var parry_time_left: float = 0.0
 var cooldown_left: float = 0.0
