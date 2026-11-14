@@ -6,6 +6,8 @@ extends Area2D
 @export var parry_window: float = 0.5
 ## Time after a click before the next click can parry, in seconds.
 @export var parry_cooldown: float = 0.7
+## A click this soon after a bullet reaches the shield still deflects it, in seconds.
+@export var coyote_time: float = 0.12
 
 var parry_time_left: float = 0.0
 var cooldown_left: float = 0.0
