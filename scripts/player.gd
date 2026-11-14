@@ -7,12 +7,13 @@ extends CharacterBody2D
 @export var max_health: int = 3
 
 @onready var health: int = max_health
-@onready var health_label: Label = $HUD/HealthLabel
+@onready var health_bar: ProgressBar = $HUD/Health/Bar
 @onready var sprite: AnimatedSprite2D = $Sprite
 
 
 func _ready() -> void:
-	_update_health_label()
+	health_bar.max_value = max_health
+	health_bar.value = health
 
 
 func _physics_process(delta: float) -> void:
@@ -28,11 +29,7 @@ func _physics_process(delta: float) -> void:
 
 func take_damage(amount: int) -> void:
 	health = maxi(health - amount, 0)
-	_update_health_label()
+	health_bar.value = health
 	HitEffect.play(sprite)
 	if health == 0:
 		get_tree().reload_current_scene()
-
-
-func _update_health_label() -> void:
-	health_label.text = "HP: %d/%d" % [health, max_health]
