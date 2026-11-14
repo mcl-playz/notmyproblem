@@ -2,42 +2,64 @@
 
 [ext_resource type="Script" uid="uid://bj24tovdk4v4" path="res://scripts/menu.gd" id="1_yqeox"]
 [ext_resource type="AudioStream" uid="uid://g41n7cet48vc" path="res://assets/sounds/click.wav" id="2_click"]
+[ext_resource type="Texture2D" uid="uid://dqvrk2yldhcu4" path="res://assets/menu/main/backdrop.png" id="3_backdrop"]
+[ext_resource type="Texture2D" uid="uid://dxyn4gamdbavv" path="res://assets/menu/main/play button.png" id="4_play"]
+[ext_resource type="Texture2D" uid="uid://bb571tfrdmmf" path="res://assets/menu/main/quit button.png" id="5_quit"]
 
-[node name="Control" type="Control" unique_id=1720388359]
+[sub_resource type="AtlasTexture" id="AtlasTexture_play"]
+atlas = ExtResource("4_play")
+region = Rect2(40, 104, 176, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_quit"]
+atlas = ExtResource("5_quit")
+region = Rect2(32, 104, 176, 52)
+
+[node name="Menu" type="Control" unique_id=1720388359]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -1152.0
-offset_bottom = -648.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_yqeox")
 
-[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1979685925]
-layout_mode = 0
-offset_right = 548.4633
-offset_bottom = 316.31204
-scale = Vector2(2.115, 2.115)
+[node name="Backdrop" type="TextureRect" parent="." unique_id=1979685925]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+texture = ExtResource("3_backdrop")
+expand_mode = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1429003541]
-layout_mode = 2
+[node name="Buttons" type="VBoxContainer" parent="." unique_id=1429003541]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.57
+anchor_top = 0.52
+anchor_right = 0.57
+anchor_bottom = 0.52
+offset_left = -176.0
+offset_top = -36.95999
+offset_right = 176.0
+offset_bottom = 187.04025
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+alignment = 1
 
-[node name="Not My Problem!" type="Label" parent="CenterContainer/VBoxContainer" unique_id=309275270]
+[node name="Start" type="TextureButton" parent="Buttons" unique_id=1656449215]
+custom_minimum_size = Vector2(352, 104)
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "Not My Problem!"
+texture_normal = SubResource("AtlasTexture_play")
+ignore_texture_size = true
+stretch_mode = 0
 
-[node name="Start" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1656449215]
+[node name="Quit" type="TextureButton" parent="Buttons" unique_id=890634472]
+custom_minimum_size = Vector2(352, 104)
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "Start"
-
-[node name="Quit" type="Button" parent="CenterContainer/VBoxContainer" unique_id=890634472]
-layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "Quit
-"
+texture_normal = SubResource("AtlasTexture_quit")
+ignore_texture_size = true
+stretch_mode = 0
 
 [node name="ClickSound" type="AudioStreamPlayer" parent="." unique_id=1364829175]
 stream = ExtResource("2_click")
