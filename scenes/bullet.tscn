@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bbyy3ces6i3ne"]
+
+[ext_resource type="Texture2D" uid="uid://3gjwi6qpcno7" path="res://assets/sprites/bullet.png" id="1_mkf8s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fnkrl"]
+size = Vector2(4, 2)
+
+[node name="Bullet" type="Area2D" unique_id=425341678]
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=501657254]
+texture = ExtResource("1_mkf8s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1582296507]
+shape = SubResource("RectangleShape2D_fnkrl")
