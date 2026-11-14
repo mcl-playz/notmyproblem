@@ -25,5 +25,9 @@ collision_mask = 11
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1897840096]
 shape = SubResource("RectangleShape2D_fnkrl")
 
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=884213570]
+rect = Rect2(-2, -1.5, 4, 3)
+
 [connection signal="area_entered" from="Hitbox" to="." method="_on_shield_entered"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="queue_free"]
